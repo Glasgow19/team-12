@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import numpy as np
 import pygame as pg
 from pg.locals import *
 
@@ -34,10 +35,23 @@ class Player(pg.sprite.Sprite):
         self.points = 0
 
     def go_previous():
+        self.position = self.position - 1
 
     def go_next():
+        self.position = self.position + 1
 
     def stop():
+        self
+
+class Cell():
+
+
+class Our_Map():
+    def __init__:
+        cells = range(32)
+        positions_of_cells = dict()
+
+        positions_of_cells[0] = [,]
 
 
 
@@ -50,6 +64,10 @@ def main():
     screen = pg.display.set_mode(size)
  
     pg.display.set_caption("Best game ever!")
+
+    # Set img to background
+    background_image = pygame.image.load("pictures/plansza.jpg").convert()
+    our_map = Our_map.init()
  
     # Create the player
     player = Player()
@@ -96,6 +114,7 @@ def main():
             player.rect.left = 0
  
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
+        screen.blit(background_image, [0, 0])
         our_map.draw(screen)
         player.draw(screen)
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
