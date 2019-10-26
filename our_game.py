@@ -2,7 +2,7 @@
 
 import numpy as np
 import pygame as pg
-from pg.locals import *
+from pygame.locals import *
 
 # Global constants
  
@@ -17,21 +17,25 @@ BLUE = (0, 0, 255)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-class Cell(i):
-    def __init__:
+# Challenges from girls
+challenges = list(range(32))
+
+
+class Cell:
+    def __init__(self, i):
         self.challenge = challenges[i]
         self.color = RED
 
-    def playTheGame(player):
+    def playTheGame(self, player):
         player.points = player.points + self.challenge.reward
 
 
 class Our_Map():
-    def __init__:
+    def __init__(self):
         self.number_of_cells = 32
         self.cells = []
         for i in range(self.number_of_cells):
-            self.cells.append(Cell.init(i))
+            self.cells.append(Cell(i))
 
 
         self.positions_of_cells = dict()
@@ -69,14 +73,14 @@ class Our_Map():
         self.positions_of_cells[31] = [923,1358]
 
 # Global Map
-our_map = Our_Map.init()   
+our_map = Our_Map()   
 
 class Player(pg.sprite.Sprite):
     def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
+        super().__init__()
 
-        self.width = 40
-        self.height = 60
+        width = 40
+        height = 60
         self.image = pg.Surface([width, height])
         self.image.fill(RED)
         self.change_x = 0
@@ -88,17 +92,17 @@ class Player(pg.sprite.Sprite):
         self.points = 0
 
         self.rect = self.image.get_rect()
-        self.rect.center = (our_map.positions_of_cells[i][0], our_map.positions_of_cells[i][1])
+        self.rect.center = (our_map.positions_of_cells[self.position][0], our_map.positions_of_cells[self.position][1])
 
-    def go_previous():
+    def go_previous(self):
         self.position = self.position - 1
         self.update_position()
 
-    def go_next():
+    def go_next(self):
         self.position = self.position + 1
         self.update_position()
 
-    def update_position():
+    def update_position(self):
         self.rect.center = (our_map.positions_of_cells[i][0], our_map.positions_of_cells[i][1])
         
 def main():
