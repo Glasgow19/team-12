@@ -21,7 +21,7 @@ SCREEN_HEIGHT = 600
 
 class Cell():
     def __init__:
-        
+        #do nothing
 
 class Our_Map():
     def __init__:
