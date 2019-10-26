@@ -72,9 +72,10 @@ class Our_Map():
         self.positions_of_cells[30] = [794,1365]
         self.positions_of_cells[31] = [923,1358]
 
-# Global Map
-our_map = Our_Map()   
-
+    def draw(self):
+        return
+        #do nothing
+  
 class Player(pg.sprite.Sprite):
     def __init__(self, *args, **kwargs):
         super().__init__()
@@ -92,7 +93,7 @@ class Player(pg.sprite.Sprite):
         self.points = 0
 
         self.rect = self.image.get_rect()
-        self.rect.center = (our_map.positions_of_cells[self.position][0], our_map.positions_of_cells[self.position][1])
+        self.update_position()
 
     def go_previous(self):
         self.position = self.position - 1
@@ -103,11 +104,14 @@ class Player(pg.sprite.Sprite):
         self.update_position()
 
     def update_position(self):
-        self.rect.center = (our_map.positions_of_cells[i][0], our_map.positions_of_cells[i][1])
+        self.rect.center = (our_map.positions_of_cells[self.position][0], our_map.positions_of_cells[self.position][1])
         
 def main():
     """ Main Program """
     pg.init()
+
+    # Global Map
+    our_map = Our_Map() 
  
     # Set the height and width of the screen
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]
@@ -116,13 +120,10 @@ def main():
     pg.display.set_caption("Best game ever!")
 
     # Set img to background
-    background_image = pygame.image.load("pictures/plansza.jpg").convert()
+    background_image = pg.image.load("pictures/plansza.jpg").convert()
  
     # Create the player
     player = Player()
- 
-    active_sprite_list = pg.sprite.Group()
-    player.level = current_level
  
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
