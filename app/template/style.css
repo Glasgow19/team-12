@@ -54,4 +54,14 @@ body {
 .form message {
     margin: 15px 0 0;
     color: aliceblue; 
+    font-size: 12px;
+}
+
+.form .message a{
+    color: #0CAF50;
+    text-decoration: none;
+}
+
+.form .register-form {
+    display:none;
 }

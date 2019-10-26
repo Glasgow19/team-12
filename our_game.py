@@ -21,17 +21,24 @@ class Player(pg.sprite.Sprite):
     def __init__(self, *args, **kwargs):
         return super().__init__(*args, **kwargs)
 
-    width = 40
-    height = 60
-    self.image = pg.Surface([width, height])
-    self.image.fill(RED)
-    self.change_x = 0
-    self.change_y = 0
+        width = 40
+        height = 60
+        self.image = pg.Surface([width, height])
+        self.image.fill(RED)
+        self.change_x = 0
+        self.change_y = 0
 
-    self.active = True
+        self.active = True
 
-    self.position = 0
-    self.points = 0
+        self.position = 0
+        self.points = 0
+
+    def go_previous():
+
+    def go_next():
+
+    def stop():
+
 
 
 def main():
@@ -42,18 +49,10 @@ def main():
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]
     screen = pg.display.set_mode(size)
  
-    pg.display.set_caption("Platformer Jumper")
+    pg.display.set_caption("Best game ever!")
  
     # Create the player
     player = Player()
- 
-    # Create all the levels
-    level_list = []
-    level_list.append( Level_01(player) )
- 
-    # Set the current level
-    current_level_no = 0
-    current_level = level_list[current_level_no]
  
     active_sprite_list = pg.sprite.Group()
     player.level = current_level
@@ -76,23 +75,17 @@ def main():
  
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_LEFT:
-                    player.go_left()
+                    player.go_previous()
                 if event.key == pg.K_RIGHT:
-                    player.go_right()
-                if event.key == pg.K_UP:
-                    player.jump()
- 
+                    player.go_next()
+                
+            """ DO WE NEED THAT
             if event.type == pg.KEYUP:
                 if event.key == pg.K_LEFT and player.change_x < 0:
                     player.stop()
                 if event.key == pg.K_RIGHT and player.change_x > 0:
                     player.stop()
- 
-        # Update the player.
-        active_sprite_list.update()
- 
-        # Update items in the level
-        current_level.update()
+            """
  
         # If the player gets near the right side, shift the world left (-x)
         if player.rect.right > SCREEN_WIDTH:
@@ -103,9 +96,8 @@ def main():
             player.rect.left = 0
  
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
-        current_level.draw(screen)
-        active_sprite_list.draw(screen)
- 
+        our_map.draw(screen)
+        player.draw(screen)
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
  
         # Limit to 60 frames per second
