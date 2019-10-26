@@ -20,6 +20,8 @@ SCREEN_HEIGHT = 600
 # Challenges from girls
 challenges = list(range(32))
 
+# Please here upload couple of mini-games or challenges.
+
 
 class Cell:
     def __init__(self, i):
@@ -72,8 +74,9 @@ class Our_Map():
         self.positions_of_cells[30] = [794,1365]
         self.positions_of_cells[31] = [923,1358]
 
-    def draw(self):
-        return
+    # This may be useful for later if we have scoreboard etc.
+    #def draw(self, screen):
+        #return
         #do nothing
   
 class Player(pg.sprite.Sprite):
@@ -93,18 +96,23 @@ class Player(pg.sprite.Sprite):
         self.points = 0
 
         self.rect = self.image.get_rect()
-        self.update_position()
+        self.rect.center = [180,1215]
 
-    def go_previous(self):
+    def go_previous(self, our_map):
         self.position = self.position - 1
-        self.update_position()
+        self.update_position(our_map)
 
-    def go_next(self):
+    def go_next(self, our_map):
         self.position = self.position + 1
-        self.update_position()
+        self.update_position(our_map)
 
-    def update_position(self):
+    def update_position(self, our_map):
         self.rect.center = (our_map.positions_of_cells[self.position][0], our_map.positions_of_cells[self.position][1])
+
+    def draw(self, screen):
+        """ HOW TO DRAW PLAYER?"""
+        pg.draw.rect(screen, RED, self.rect)  
+
         
 def main():
     """ Main Program """
@@ -127,7 +135,6 @@ def main():
  
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
-    active_sprite_list.add(player)
  
     # Loop until the user clicks the close button.
     done = False
@@ -143,9 +150,9 @@ def main():
  
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_LEFT:
-                    player.go_previous()
+                    player.go_previous(our_map)
                 if event.key == pg.K_RIGHT:
-                    player.go_next()
+                    player.go_next(our_map)
                 
             """ DO WE NEED THAT
             if event.type == pg.KEYUP:
@@ -165,7 +172,7 @@ def main():
  
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         screen.blit(background_image, [0, 0])
-        our_map.draw(screen)
+        # our_map.draw(screen) # called when implemented
         player.draw(screen)
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
  
