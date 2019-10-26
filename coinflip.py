@@ -16,16 +16,13 @@ textpos = text.get_rect()
 textpos.centerx = background.get_rect().centerx
 background.blit(text, textpos)
 
-image = pygame.image.load("coin.png")
+image = pygame.image.load("pictures/coin.png")
 coin = pygame.transform.scale(image, (300, 200))
 coin.set_colorkey((255,255,255))
 coinrect = coin.get_rect(center =(width/2, height*3/4))
-#screen.blit(coin, (width, height))
 screen.blit(background,(0,0))
 
 for x in range (200):
-    #screen.blit(background, coinrect, coinrect)
-    #coin.fill((0,0,0,0))
     coinrect = coinrect.move(0,-2)
     coin = pygame.transform.scale(image, (300, 200))
     screen.blit(pygame.transform.rotate(coin,x), coinrect)
