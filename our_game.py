@@ -17,41 +17,21 @@ BLUE = (0, 0, 255)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-
-class Player(pg.sprite.Sprite):
-    def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
-
-        width = 40
-        height = 60
-        self.image = pg.Surface([width, height])
-        self.image.fill(RED)
-        self.change_x = 0
-        self.change_y = 0
-
-        self.active = True
-
-        self.position = 0
-        self.points = 0
-
-    def go_previous():
-        self.position = self.position - 1
-
-    def go_next():
-        self.position = self.position + 1
-
-    def stop():
-        self
+# Global Map
 
 class Cell():
-
+    def __init__:
+        
 
 class Our_Map():
     def __init__:
         self.number_of_cells = 32
-        self.cells = range(self.number_of_cells)
-        self.positions_of_cells = dict()
+        self.cells = []
+        for i in range(self.number_of_cells):
+            self.cells.append(Cell.init())
 
+
+        self.positions_of_cells = dict()
         self.positions_of_cells[0] = [180,1215]
         self.positions_of_cells[1] = [303,1215]
         self.positions_of_cells[2] = [430,1200]
@@ -85,7 +65,35 @@ class Our_Map():
         self.positions_of_cells[30] = [794,1365]
         self.positions_of_cells[31] = [923,1358]
 
-    
+our_map = Our_Map.init()   
+
+class Player(pg.sprite.Sprite):
+    def __init__(self, *args, **kwargs):
+        return super().__init__(*args, **kwargs)
+
+        width = 40
+        height = 60
+        self.image = pg.Surface([width, height])
+        self.image.fill(RED)
+        self.change_x = 0
+        self.change_y = 0
+
+        self.active = True
+
+        self.position = 0
+        self.points = 0
+
+        self.rect = self.image.get_rect()
+        self.rect.center = (our_map.positions_of_cells[i][0], our_map.positions_of_cells[i][1])
+
+    def go_previous():
+        self.position = self.position - 1
+
+    def go_next():
+        self.position = self.position + 1
+
+    def draw():
+        self.rect.center = (our_map.positions_of_cells[i][0], our_map.positions_of_cells[i][1])
         
 def main():
     """ Main Program """
@@ -99,7 +107,6 @@ def main():
 
     # Set img to background
     background_image = pygame.image.load("pictures/plansza.jpg").convert()
-    our_map = Our_map.init()
  
     # Create the player
     player = Player()
