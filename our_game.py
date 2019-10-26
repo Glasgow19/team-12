@@ -48,13 +48,45 @@ class Cell():
 
 class Our_Map():
     def __init__:
-        cells = range(32)
-        positions_of_cells = dict()
+        self.number_of_cells = 32
+        self.cells = range(self.number_of_cells)
+        self.positions_of_cells = dict()
 
-        positions_of_cells[0] = [,]
+        self.positions_of_cells[0] = [180,1215]
+        self.positions_of_cells[1] = [303,1215]
+        self.positions_of_cells[2] = [430,1200]
+        self.positions_of_cells[3] = [450,1080]
+        self.positions_of_cells[4] = [437,955]
+        self.positions_of_cells[5] = [314,936]
+        self.positions_of_cells[6] = [188,923]
+        self.positions_of_cells[7] = [140,819]
+        self.positions_of_cells[8] = [140,689]
+        self.positions_of_cells[9] = [140,558]
+        self.positions_of_cells[10] = [173,433]
+        self.positions_of_cells[11] = [298,423]
+        self.positions_of_cells[12] = [406,474]
+        self.positions_of_cells[13] = [416,600]
+        self.positions_of_cells[14] = [474,698]
+        self.positions_of_cells[15] = [600,693]
+        self.positions_of_cells[16] = [661,600]
+        self.positions_of_cells[17] = [661,468]
+        self.positions_of_cells[18] = [671,341]
+        self.positions_of_cells[19] = [792,296]
+        self.positions_of_cells[20] = [896,361]
+        self.positions_of_cells[21] = [896,486]
+        self.positions_of_cells[22] = [896,616]
+        self.positions_of_cells[23] = [896,750]
+        self.positions_of_cells[24] = [896,874]
+        self.positions_of_cells[25] = [896,1000]
+        self.positions_of_cells[26] = [828,1110]
+        self.positions_of_cells[27] = [707,1116]
+        self.positions_of_cells[28] = [645,1217]
+        self.positions_of_cells[29] = [673,1344]
+        self.positions_of_cells[30] = [794,1365]
+        self.positions_of_cells[31] = [923,1358]
 
-
-
+    
+        
 def main():
     """ Main Program """
     pg.init()
