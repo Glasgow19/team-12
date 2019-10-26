@@ -17,18 +17,21 @@ BLUE = (0, 0, 255)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-# Global Map
-
-class Cell():
+class Cell(i):
     def __init__:
-        #do nothing
+        self.challenge = challenges[i]
+        self.color = RED
+
+    def playTheGame(player):
+        player.points = player.points + self.challenge.reward
+
 
 class Our_Map():
     def __init__:
         self.number_of_cells = 32
         self.cells = []
         for i in range(self.number_of_cells):
-            self.cells.append(Cell.init())
+            self.cells.append(Cell.init(i))
 
 
         self.positions_of_cells = dict()
@@ -65,14 +68,15 @@ class Our_Map():
         self.positions_of_cells[30] = [794,1365]
         self.positions_of_cells[31] = [923,1358]
 
+# Global Map
 our_map = Our_Map.init()   
 
 class Player(pg.sprite.Sprite):
     def __init__(self, *args, **kwargs):
         return super().__init__(*args, **kwargs)
 
-        width = 40
-        height = 60
+        self.width = 40
+        self.height = 60
         self.image = pg.Surface([width, height])
         self.image.fill(RED)
         self.change_x = 0
@@ -88,11 +92,13 @@ class Player(pg.sprite.Sprite):
 
     def go_previous():
         self.position = self.position - 1
+        self.update_position()
 
     def go_next():
         self.position = self.position + 1
+        self.update_position()
 
-    def draw():
+    def update_position():
         self.rect.center = (our_map.positions_of_cells[i][0], our_map.positions_of_cells[i][1])
         
 def main():
