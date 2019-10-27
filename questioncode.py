@@ -20,7 +20,7 @@ def main():
     background.blit(text, textpos)
 
     font = pygame.font.Font(None, 30)
-    text = font.render("Would you rather take 100 pounds or choose a box?", 1, (10, 10, 10))
+    text = font.render("Would you rather get 100 pounds or choose a box?", 1, (10, 10, 10))
     background.blit(text, (200, 100))
 
     font = pygame.font.Font(None, 30)
@@ -42,19 +42,21 @@ def main():
         screen.blit(background, (0, 0))
         green = ((50,205,50))
         pygame.draw.rect(screen, green, (125,500,100,50))
+        red = ((250, 0, 0))
+        pygame.draw.rect(screen, red, (650,500,100,50))
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if 125+100 > mouse[0] > 125 and 500 + 50 > mouse[1] >500:
             if click[0] == 1:
                 font = pygame.font.SysFont("comicsansms", 30)
-                text = font.render("You are willing to take risks :)", 1, (10, 10, 10))
+                text = font.render("You are very risky :)", 1, (10, 10, 10))
+                result = 1
                 background.blit(text, (300, 200))
-        red = ((250, 0, 0))
-        pygame.draw.rect(screen, red, (650,500,100,50))
-        if 650+100 > mouse[0] > 650 and 500 + 50 > mouse[1] >500:
+        elif 650+100 > mouse[0] > 650 and 500 + 50 > mouse[1] >500:
             if click[0] == 1:
                 font = pygame.font.SysFont("comicsansms", 30)
-                text = font.render("You are not willing not take risks :(", 1, (10, 10, 10))
+                text = font.render("You're not very risky :(", 1, (10, 10, 10))
+                result = 0
                 background.blit(text, (300, 200))
         pygame.display.update()
         pygame.display.flip()
