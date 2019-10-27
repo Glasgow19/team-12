@@ -23,6 +23,10 @@ quit = font.render("Quit?", 1, (10, 10, 10))
 quitpos = quit.get_rect(center =(45, height-20))
 background.blit(quit, quitpos)
 
+flip_button = pygame.draw.rect(background, (200,2,2), (435, 50, 70, 45))
+flip_buttonrect = flip_button.move(background.get_rect().centerx, 60)
+pygame.display.update()
+
 font = pygame.font.Font(None, 36)
 flip = font.render("Flip", 1, (10, 10, 10))
 flippos = (background.get_rect().centerx, 60)
@@ -33,9 +37,14 @@ image = pygame.image.load("pictures/coin.png")
 coin = pygame.transform.scale(image, (300, 200))
 coin.set_colorkey((255,255,255))
 coinrect = coin.get_rect(center =(width/2, height*3/4))
+background.blit(coin, coinrect)
 screen.blit(background,(0,0))
+pygame.display.update()
 
 def flip_coin(screen, coinrect, coin, image):
+
+    pygame.draw.rect(background, (177,149,160), (50, 100, 600, 500))
+
     r = random.randint(0,1)
     for x in range (200):
         coinrect = coinrect.move(0,-2)
@@ -64,14 +73,29 @@ def flip_coin(screen, coinrect, coin, image):
 
     font = pygame.font.Font(None, 36)
     result = font.render(result, 1, (10, 10, 10))
-    resultpos = result.get_rect(center =(width/2, height*3/4))
+    resultpos = result.get_rect(center =(width/2, height*7/8))
     background.blit(result, resultpos)
     screen.blit(background,(0,0))
 
+    coinrect = coin.get_rect(center =(width/2, height*3/4))
+    background.blit(coin, coinrect)
+    screen.blit(background,(0,0))
+    pygame.display.update()
 
-flip_coin(screen, coinrect, coin, image)
 
-pygame.display.update()
+while(1):
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()
+    pygame.time.delay(10)
+
+    mouse = pygame.mouse.get_pos()
+
+    if 435+70 > mouse[0] > 435 and 50+45 > mouse[1] > 50:
+        flip_coin(screen, coinrect, coin, image)
+
+#    pygame.display.update()
+#flip_coin(screen, coinrect, coin, image)
+#pygame.display.update()
 
 while 1:
     for event in pygame.event.get():
