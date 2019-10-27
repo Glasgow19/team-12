@@ -13,10 +13,22 @@ background = background.convert()
 background.fill((177,149,160))
 
 font = pygame.font.Font(None, 36)
-text = font.render("Choose one of the options and flip the coin ten times.", 1, (10, 10, 10))
+text = font.render("How many flips will you need to get three heads?", 1, (10, 10, 10))
 textpos = text.get_rect()
 textpos = (120, 20)
 background.blit(text, textpos)
+
+font = pygame.font.Font(None, 36)
+text1 = font.render("No of heads:", 1, (10, 10, 10))
+textpos1 = text.get_rect()
+textpos1 = (10, 180)
+background.blit(text1, textpos1)
+
+font = pygame.font.Font(None, 36)
+text2 = font.render("Total no of throws:", 1, (10, 10, 10))
+textpos2 = text.get_rect()
+textpos2 = (10, 210)
+background.blit(text2, textpos2)
 
 font = pygame.font.Font(None, 36)
 quit = font.render("Quit?", 1, (10, 10, 10))
@@ -43,7 +55,7 @@ pygame.display.update()
 
 def flip_coin(screen, coinrect, coin, image):
 
-    pygame.draw.rect(background, (177,149,160), (50, 100, 600, 500))
+    pygame.draw.rect(background, (177,149,160), (330, 400, 250, 250))
 
     r = random.randint(0,1)
     for x in range (200):
