@@ -7,12 +7,13 @@ app = Flask(__name__)
 @app.route('/')
 def index():
    return render_template("start.html")
- 
+
+"""
 @app.route("/play")
 def play():
     return our_game.main()
 
-"""
+
 @app.route('/text', methods=['GET', 'POST'])
 def text(comments=[]):
     if request.method == "GET":
