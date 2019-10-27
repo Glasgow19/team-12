@@ -1,5 +1,11 @@
 #!/usr/bin/python
 import our_game
+import numpy as np
+import pygame as pg
+from pygame.locals import *
+import os, sys, random
+from subprocess import call
+from subprocess import Popen
 
 from flask import Flask, render_template, request, redirect, url_for
   
@@ -11,7 +17,8 @@ def index():
 
 @app.route("/play")
 def play():
-    exec(open(our_game).read())
+    return our_game.main()
+    # return exec(open("our_game.py").read())
 
 """
 @app.route('/text', methods=['GET', 'POST'])
