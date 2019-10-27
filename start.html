@@ -7,20 +7,21 @@
 </head>
 
 <body>
-    <h1>Welcome to the most interesting game in the world!</h1>
+    <h1 style="color:red">Welcome to the most interesting game in the world!</h1>
     <div class="loginpage">
         <div class="form">
             <form class="register-form">
                 <input type="text" placeholder= "nickname">
                 <input type="password" placeholder= "password">
                 <input type="text" placeholder= "mail">
-                <button onlick="goPython()">Create</button>
+                <a href="our_game.py"><button onlick="goPython()">Create</button></a>
                 <p class="message">Already registered?<a href="#"> Login</a></p>
             </form>
             <form class="login">
                 <input type="text" placeholder= "nickname">
                 <input type="password" placeholder= "password">
-                <button onlick="goPython()">Login</button>
+                <a href="#" onclick="return play();"><button>Click</button></a>
+                <a href="our_game.py"><button onlick="goPython()">Login</button></a>
                 <p class="message">Not registered?<a href="#"> Register</a></p>
             </form>
         </div>
@@ -37,13 +38,15 @@
     <script>
         function goPython(){
             $.ajax({
-              url: "../../our_game.py",
-             context: document.body
+            url: "our_game.py",
+            context: document.body,
             }).done(function() {
-             alert('finished python script');;
+            alert('finished python script');;
             });
         }
     </script>
+
+  }
 
 </body>
 
