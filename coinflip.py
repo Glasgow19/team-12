@@ -138,6 +138,7 @@ def game_coin_flip():
         if 435+70 > mouse[0] > 435 and 50+45 > mouse[1] > 50 and click[0] == 1:
             flip_coin(screen, coinrect, coin, image)
 
+
         if 5+80 > mouse[0] > 5 and height-50+40 > mouse[1] > height-50 and click[0] == 1:
             return
 
