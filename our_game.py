@@ -1,11 +1,12 @@
 #!/usr/bin/python
-import coinflip
+import coinflip2
 
 import numpy as np
 import pygame as pg
 from pygame.locals import *
-import os
+import os, sys, random
 from subprocess import call
+from subprocess import Popen
 
 # Global constants
  
@@ -24,8 +25,9 @@ SCREEN_HEIGHT = 900
 challenges = []
 # Please here upload couple of mini-games or challenges.
 challenges.append("nothing.py")
-challenges.append("nothing.py")
-challenges.append("coinflip.py")
+challenges.append("coinflip2.py")
+for j in range(30):
+    challenges.append("nothing.py")
 
 class Background(pg.sprite.Sprite):
     def __init__(self, image_file, location):
@@ -122,7 +124,8 @@ class Player(pg.sprite.Sprite):
         if self.position not in self.explored:
             if challenges[self.position] != "nothing.py":
                 '''open the game'''
-                call(["python", challenges[self.position]])
+                # exec(open(challenges[self.position]).read())
+                Popen('python ' + challenges[self.position])
         self.update_position(our_map)
 
     def update_position(self, our_map):
