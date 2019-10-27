@@ -48,8 +48,8 @@ class Our_Map():
 
 
         self.positions_of_cells = dict()
-        self.positions_of_cells[0] = [180,1215]
-        self.positions_of_cells[1] = [303,1215]
+        self.positions_of_cells[0] = [110,695]
+        self.positions_of_cells[1] = [130,695]
         self.positions_of_cells[2] = [430,1200]
         self.positions_of_cells[3] = [450,1080]
         self.positions_of_cells[4] = [437,955]
@@ -90,8 +90,8 @@ class Player(pg.sprite.Sprite):
     def __init__(self, *args, **kwargs):
         super().__init__()
 
-        width = 40
-        height = 60
+        width = 30
+        height = 30
         self.image = pg.Surface([width, height])
         self.image.fill(RED)
         self.change_x = 0
@@ -140,8 +140,8 @@ def main():
     # Create the player
     player = Player()
  
-    player.rect.x = 340
-    player.rect.y = SCREEN_HEIGHT - player.rect.height
+    player.rect.x = our_map.positions_of_cells[0][0]
+    player.rect.y = our_map.positions_of_cells[0][1]
  
     # Loop until the user clicks the close button.
     done = False
