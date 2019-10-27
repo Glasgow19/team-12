@@ -1,8 +1,11 @@
 #!/usr/bin/python
+import coinflip
 
 import numpy as np
 import pygame as pg
 from pygame.locals import *
+import os
+from subprocess import call
 
 # Global constants
  
@@ -18,9 +21,11 @@ SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 900
 
 # Challenges from girls
-challenges = list(range(32))
-
+challenges = []
 # Please here upload couple of mini-games or challenges.
+challenges.append("nothing.py")
+challenges.append("nothing.py")
+challenges.append("coinflip.py")
 
 class Background(pg.sprite.Sprite):
     def __init__(self, image_file, location):
@@ -36,7 +41,8 @@ class Cell:
         self.color = RED
 
     def playTheGame(self, player):
-        player.points = player.points + self.challenge.reward
+        # player.points = player.points + self.challenge.reward
+        pass
 
 
 class Our_Map():
@@ -105,16 +111,23 @@ class Player(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [180,1215]
 
+        self.explored = []
+
     def go_previous(self, our_map):
         self.position = self.position - 1
         self.update_position(our_map)
 
     def go_next(self, our_map):
         self.position = self.position + 1
+        if self.position not in self.explored:
+            if challenges[self.position] != "nothing.py":
+                '''open the game'''
+                call(["python", challenges[self.position]])
         self.update_position(our_map)
 
     def update_position(self, our_map):
         self.rect.center = (our_map.positions_of_cells[self.position][0], our_map.positions_of_cells[self.position][1])
+        self.explored.append(self.position)
 
     def draw(self, screen):
         """ HOW TO DRAW PLAYER?"""
