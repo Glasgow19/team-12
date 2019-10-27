@@ -47,7 +47,7 @@ body {
     cursor: pointer;
 }
 
-.form button: hover, .form button: :active {
+.form button: hover,.form button: active {
     background: #43A047;
 }
 
