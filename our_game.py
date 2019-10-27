@@ -2,7 +2,7 @@
 
 import numpy as np
 import pygame as pg
-from pg.locals import *
+from pygame.locals import *
 
 # Global constants
  
@@ -17,10 +17,71 @@ BLUE = (0, 0, 255)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+# Challenges from girls
+challenges = list(range(32))
 
+# Please here upload couple of mini-games or challenges.
+
+
+class Cell:
+    def __init__(self, i):
+        self.challenge = challenges[i]
+        self.color = RED
+
+    def playTheGame(self, player):
+        player.points = player.points + self.challenge.reward
+
+
+class Our_Map():
+    def __init__(self):
+        self.number_of_cells = 32
+        self.cells = []
+        for i in range(self.number_of_cells):
+            self.cells.append(Cell(i))
+
+
+        self.positions_of_cells = dict()
+        self.positions_of_cells[0] = [180,1215]
+        self.positions_of_cells[1] = [303,1215]
+        self.positions_of_cells[2] = [430,1200]
+        self.positions_of_cells[3] = [450,1080]
+        self.positions_of_cells[4] = [437,955]
+        self.positions_of_cells[5] = [314,936]
+        self.positions_of_cells[6] = [188,923]
+        self.positions_of_cells[7] = [140,819]
+        self.positions_of_cells[8] = [140,689]
+        self.positions_of_cells[9] = [140,558]
+        self.positions_of_cells[10] = [173,433]
+        self.positions_of_cells[11] = [298,423]
+        self.positions_of_cells[12] = [406,474]
+        self.positions_of_cells[13] = [416,600]
+        self.positions_of_cells[14] = [474,698]
+        self.positions_of_cells[15] = [600,693]
+        self.positions_of_cells[16] = [661,600]
+        self.positions_of_cells[17] = [661,468]
+        self.positions_of_cells[18] = [671,341]
+        self.positions_of_cells[19] = [792,296]
+        self.positions_of_cells[20] = [896,361]
+        self.positions_of_cells[21] = [896,486]
+        self.positions_of_cells[22] = [896,616]
+        self.positions_of_cells[23] = [896,750]
+        self.positions_of_cells[24] = [896,874]
+        self.positions_of_cells[25] = [896,1000]
+        self.positions_of_cells[26] = [828,1110]
+        self.positions_of_cells[27] = [707,1116]
+        self.positions_of_cells[28] = [645,1217]
+        self.positions_of_cells[29] = [673,1344]
+        self.positions_of_cells[30] = [794,1365]
+        self.positions_of_cells[31] = [923,1358]
+
+    # This may be useful for later if we have scoreboard etc.
+    #def draw(self, screen):
+        #return
+        #do nothing
+  
 class Player(pg.sprite.Sprite):
     def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
+        super().__init__()
 
         width = 40
         height = 60
@@ -34,59 +95,31 @@ class Player(pg.sprite.Sprite):
         self.position = 0
         self.points = 0
 
-    def go_previous():
+        self.rect = self.image.get_rect()
+        self.rect.center = [180,1215]
+
+    def go_previous(self, our_map):
         self.position = self.position - 1
+        self.update_position(our_map)
 
-    def go_next():
+    def go_next(self, our_map):
         self.position = self.position + 1
+        self.update_position(our_map)
 
-    def stop():
-        self
+    def update_position(self, our_map):
+        self.rect.center = (our_map.positions_of_cells[self.position][0], our_map.positions_of_cells[self.position][1])
 
-class Cell():
+    def draw(self, screen):
+        """ HOW TO DRAW PLAYER?"""
+        pg.draw.rect(screen, RED, self.rect)  
 
-
-class Our_Map():
-    def __init__:
-        cells = range(32)
-        positions_of_cells = dict()
-
-        positions_of_cells[0] = [180,1215]
-        positions_of_cells[1] = [303,1215]
-        positions_of_cells[2] = [430,1200]
-        positions_of_cells[3] = [450,1080]
-        positions_of_cells[4] = [437,955]
-        positions_of_cells[5] = [314,936]
-        positions_of_cells[6] = [188,923]
-        positions_of_cells[7] = [140,819]
-        positions_of_cells[8] = [140,689]
-        positions_of_cells[9] = [140,558]
-        positions_of_cells[10] = [173,433]
-        positions_of_cells[11] = [298,423]
-        positions_of_cells[12] = [406,474]
-        positions_of_cells[13] = [416,600]
-        positions_of_cells[14] = [474,698]
-        positions_of_cells[15] = [600,693]
-        positions_of_cells[16] = [661,600]
-        positions_of_cells[17] = [661,468]
-        positions_of_cells[18] = [671,341]
-        positions_of_cells[19] = [792,296]
-        positions_of_cells[20] = [896,361]
-        positions_of_cells[21] = [896,486]
-        positions_of_cells[22] = [896,616]
-        positions_of_cells[23] = [896,750]
-        positions_of_cells[24] = [896,874]
-        positions_of_cells[25] = [896,1000]
-        positions_of_cells[26] = [828,1110]
-        positions_of_cells[27] = [707,1116]
-        positions_of_cells[28] = [645,1217]
-        positions_of_cells[29] = [673,1344]
-        positions_of_cells[30] = [794,1365]
-        positions_of_cells[31] = [923,1358]
         
 def main():
     """ Main Program """
     pg.init()
+
+    # Global Map
+    our_map = Our_Map() 
  
     # Set the height and width of the screen
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]
@@ -95,18 +128,13 @@ def main():
     pg.display.set_caption("Best game ever!")
 
     # Set img to background
-    background_image = pygame.image.load("pictures/plansza.jpg").convert()
-    our_map = Our_map.init()
+    background_image = pg.image.load("pictures/plansza.jpg").convert()
  
     # Create the player
     player = Player()
  
-    active_sprite_list = pg.sprite.Group()
-    player.level = current_level
- 
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
-    active_sprite_list.add(player)
  
     # Loop until the user clicks the close button.
     done = False
@@ -122,9 +150,9 @@ def main():
  
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_LEFT:
-                    player.go_previous()
+                    player.go_previous(our_map)
                 if event.key == pg.K_RIGHT:
-                    player.go_next()
+                    player.go_next(our_map)
                 
             """ DO WE NEED THAT
             if event.type == pg.KEYUP:
@@ -144,7 +172,7 @@ def main():
  
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         screen.blit(background_image, [0, 0])
-        our_map.draw(screen)
+        # our_map.draw(screen) # called when implemented
         player.draw(screen)
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
  
