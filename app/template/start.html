@@ -15,18 +15,24 @@
                 <input type="text" placeholder= "password">
                 <input type="text" placeholder= "mail">
                 <button>Create</button>
-                <p class="message">Already registered?<a href="#">Login</a></p>
+                <p class="message">Already registered?<a href="#"> Login</a></p>
             </form>
             <form class="login">
                 <input type="text" placeholder= "nickname">
                 <input type="text" placeholder= "password">
                 <button>Login</button>
-                <p class="message">Not registered?<a href="#">Register</a></p>
+                <p class="message">Not registered?<a href="#"> Register</a></p>
             </form>
         </div>
     </div>
 
-    <script src=""></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $('.message a').click(function(){
+        $('form').animate({height:"toggle", opacity: "toggle"}, "slow");
+        });
+
+    </script>
 </body>
 
 </html>
