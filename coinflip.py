@@ -1,4 +1,5 @@
 import sys, pygame
+
 pygame.init()
 
 size = width, height = 900, 700
@@ -11,7 +12,7 @@ background = background.convert()
 background.fill((177,149,160))
 
 font = pygame.font.Font(None, 36)
-text = font.render("Flip the coin.", 1, (10, 10, 10))
+text = font.render("Choose one of the options and flip the coin ten times.", 1, (10, 10, 10))
 textpos = text.get_rect()
 textpos.centerx = background.get_rect().centerx
 background.blit(text, textpos)
