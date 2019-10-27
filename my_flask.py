@@ -8,12 +8,12 @@ app = Flask(__name__)
 def index():
    return render_template("start.html")
 
-"""
+
 @app.route("/play")
 def play():
-    return our_game.main()
+    exec(open(our_game).read())
 
-
+"""
 @app.route('/text', methods=['GET', 'POST'])
 def text(comments=[]):
     if request.method == "GET":

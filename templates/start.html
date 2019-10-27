@@ -3,7 +3,8 @@
 
 <head>
     <title>Welcome to the game!</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
 </head>
 
 <body>
@@ -14,13 +15,13 @@
                 <input type="text" placeholder= "nickname">
                 <input type="password" placeholder= "password">
                 <input type="text" placeholder= "mail">
-                <button onlick="goPython()">Create</button>
+                <a href="/play"><button>Create</button></a>
                 <p class="message">Already registered?<a href="#"> Login</a></p>
             </form>
             <form class="login">
                 <input type="text" placeholder= "nickname">
                 <input type="password" placeholder= "password">
-                <button>Login</button>
+                <a href="/play"><button>Login</button></a>
                 <p class="message">Not registered?<a href="#"> Register</a></p>
             </form>
         </div>
