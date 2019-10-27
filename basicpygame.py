@@ -3,12 +3,8 @@ import pygame
 def main():
     # Initialise screen
     pygame.init()
-   
-    logo = pygame.image.load("boxes.png")
-    pygame.display.set_icon(logo)
     pygame.display.set_caption('Risk it!')
-  
-    screen = pygame.display.set_mode((900, 700))
+    screen = pygame.display.set_mode((1000, 700))
 
 
     # Fill background
@@ -27,10 +23,16 @@ def main():
     text = font.render("Would you rather take 100 pounds or choose a box?", 1, (10, 10, 10))
     background.blit(text, (200, 100))
 
+    font = pygame.font.Font(None, 30)
+    text = font.render("Choose a box!", 1, (10, 10, 10))
+    background.blit(text, (100, 400))
+    font = pygame.font.Font(None, 30)
+    text = font.render("Take the 100 pounds!", 1, (10, 10, 10))
+    background.blit(text, (600, 400))
+
     # Blit everything to the screen
     screen.blit(background, (0, 0))
-    screen.blit(logo, (50,100))
-    pygame.display.flip()
+
     # Event loop
     while 1:
         for event in pygame.event.get():
@@ -38,8 +40,24 @@ def main():
                 return
 
         screen.blit(background, (0, 0))
+        green = ((50,205,50))
+        pygame.draw.rect(screen, green, (125,500,100,50))
+        mouse = pygame.mouse.get_pos()
+        click = pygame.mouse.get_pressed()
+        if 125+100 > mouse[0] > 125 and 500 + 50 > mouse[1] >500:
+            if click[0] == 1:
+                font = pygame.font.SysFont("comicsansms", 30)
+                text = font.render("You are willing to take risks :)", 1, (10, 10, 10))
+                background.blit(text, (300, 200))
+        red = ((250, 0, 0))
+        pygame.draw.rect(screen, red, (650,500,100,50))
+        if 650+100 > mouse[0] > 650 and 500 + 50 > mouse[1] >500:
+            if click[0] == 1:
+                font = pygame.font.SysFont("comicsansms", 30)
+                text = font.render("You are not willing not take risks :(", 1, (10, 10, 10))
+                background.blit(text, (300, 200))
+        pygame.display.update()
         pygame.display.flip()
-
 
 
 if __name__ == '__main__': main()
