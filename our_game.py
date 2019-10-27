@@ -48,11 +48,11 @@ class Our_Map():
 
 
         self.positions_of_cells = dict()
-        self.positions_of_cells[0] = [110,695]
-        self.positions_of_cells[1] = [130,695]
-        self.positions_of_cells[2] = [430,1200]
-        self.positions_of_cells[3] = [450,1080]
-        self.positions_of_cells[4] = [437,955]
+        self.positions_of_cells[0] = [100,705]
+        self.positions_of_cells[1] = [185,710]
+        self.positions_of_cells[2] = [260,710]
+        self.positions_of_cells[3] = [283,642]
+        self.positions_of_cells[4] = [287,557]
         self.positions_of_cells[5] = [314,936]
         self.positions_of_cells[6] = [188,923]
         self.positions_of_cells[7] = [140,819]
